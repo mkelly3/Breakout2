@@ -42,6 +42,7 @@ class ViewController: UIViewController, UICollisionBehaviorDelegate {
             else {
                 gameOver("You Lost")
                 
+                
             }
         }
     }
@@ -67,7 +68,7 @@ class ViewController: UIViewController, UICollisionBehaviorDelegate {
             }
         }
         if hiddenBlockCount == blocks.count {
-            gameOver("You Won")
+          gameOver("You Won")
         }
     }
     func resetGame() {
@@ -102,6 +103,18 @@ class ViewController: UIViewController, UICollisionBehaviorDelegate {
         ballDynamicBehavior.allowsRotation = false
         dynamicAnimator.addBehavior(ballDynamicBehavior)
         allObjects.append(ball)
+        
+        let width = (Int)(view.bounds.size.width - 40)
+        let margin = ((Int)(view.bounds.size.width) % 42)/2
+        for var x = margin; x < width; x += 42 {addBlock(x, y: 40, color: UIColor.blueColor())}
+        for var x = margin; x < width; x += 42 {addBlock(x, y: 62, color: UIColor.orangeColor())}
+        for var x = margin; x < width; x += 42 {addBlock(x, y: 84, color: UIColor.orangeColor())}
+        for var x = margin; x < width; x += 42 {addBlock(x, y: 128, color: UIColor.orangeColor())}
+        for var x = margin; x < width; x += 42 {addBlock(x, y: 150 , color: UIColor.greenColor())}
+        for var x = margin; x < width; x += 42 {addBlock(x, y: 172, color: UIColor.greenColor())}
+        for var x = margin; x < width; x += 42 {addBlock(x, y: 194, color: UIColor.greenColor())}
+        
+        
 
     }
     
@@ -133,6 +146,4 @@ class ViewController: UIViewController, UICollisionBehaviorDelegate {
         blocks.append(block)
         allObjects.append(block)
     }
-
 }
-
