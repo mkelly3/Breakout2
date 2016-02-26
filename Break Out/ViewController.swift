@@ -23,7 +23,7 @@ class ViewController: UIViewController, UICollisionBehaviorDelegate {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        resetGame()
        
     }
     @IBAction func dragPaddle(sender: UIPanGestureRecognizer) {
