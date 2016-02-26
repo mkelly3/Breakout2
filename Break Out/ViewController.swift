@@ -114,7 +114,19 @@ class ViewController: UIViewController, UICollisionBehaviorDelegate {
         for var x = margin; x < width; x += 42 {addBlock(x, y: 172, color: UIColor.greenColor())}
         for var x = margin; x < width; x += 42 {addBlock(x, y: 194, color: UIColor.greenColor())}
         
+        let blockBehavior = UIDynamicItemBehavior(items: blocks)
+        blockBehavior.allowsRotation = false
+        blockBehavior.density = 1000
+        blockBehavior.elasticity = 1.0
+        dynamicAnimator.addBehavior(blockBehavior)
         
+        collisionBehavior = UICollisionBehavior(items: allObjects)
+        collisionBehavior.translatesReferenceBoundsIntoBoundary = true
+        collisionBehavior.collisionMode = UICollisionBehaviorMode.Everything
+        collisionBehavior.collisionDelegate = self
+        dynamicAnimator.addBehavior(collisionBehavior)
+        
+        livesLabel.text = "Lives: \(lives)"
 
     }
     
