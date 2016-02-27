@@ -48,11 +48,11 @@ class ViewController: UIViewController, UICollisionBehaviorDelegate {
         var hiddenBlockCount = 0
         for block in blocks {
             if item1.isEqual(ball) && item2.isEqual(block) {
-                if block.backgroundColor == UIColor.yellowColor() {
+                if block.backgroundColor == UIColor.purpleColor() {
                     block.backgroundColor = UIColor.greenColor()
                 }
                 else if block.backgroundColor == UIColor.blueColor() {
-                    block.backgroundColor = UIColor.yellowColor()
+                    block.backgroundColor = UIColor.purpleColor()
                 }
                 else {
                     block.hidden = true
@@ -83,7 +83,7 @@ class ViewController: UIViewController, UICollisionBehaviorDelegate {
         
         let pushBehavior = UIPushBehavior(items: [ball], mode: .Instantaneous)
         pushBehavior.pushDirection = CGVectorMake(0.5, 1.0)
-        pushBehavior.magnitude = 0.1
+        pushBehavior.magnitude = 0.15
         dynamicAnimator.addBehavior(pushBehavior)
         
         let paddleBehavior = UIDynamicItemBehavior(items: [paddle])
@@ -104,10 +104,10 @@ class ViewController: UIViewController, UICollisionBehaviorDelegate {
         let width = (Int)(view.bounds.size.width - 40)
         let margin = ((Int)(view.bounds.size.width) % 42)/2
         for var x = margin; x < width; x += 42 {addBlock(x, y: 40, color: UIColor.blueColor())}
-        for var x = margin; x < width; x += 42 {addBlock(x, y: 62, color: UIColor.yellowColor())}
-        for var x = margin; x < width; x += 42 {addBlock(x, y: 84, color: UIColor.yellowColor())}
-        for var x = margin; x < width; x += 42 {addBlock(x, y: 106, color: UIColor.yellowColor())}
-        for var x = margin; x < width; x += 42 {addBlock(x, y: 128, color: UIColor.yellowColor())}
+        for var x = margin; x < width; x += 42 {addBlock(x, y: 62, color: UIColor.purpleColor())}
+        for var x = margin; x < width; x += 42 {addBlock(x, y: 84, color: UIColor.purpleColor())}
+        for var x = margin; x < width; x += 42 {addBlock(x, y: 106, color: UIColor.purpleColor())}
+        for var x = margin; x < width; x += 42 {addBlock(x, y: 128, color: UIColor.purpleColor())}
         for var x = margin; x < width; x += 42 {addBlock(x, y: 150 , color: UIColor.greenColor())}
         for var x = margin; x < width; x += 42 {addBlock(x, y: 172, color: UIColor.greenColor())}
         for var x = margin; x < width; x += 42 {addBlock(x, y: 194, color: UIColor.greenColor())}
