@@ -18,8 +18,7 @@ class ViewController: UIViewController, UICollisionBehaviorDelegate {
     var blocks: [UIView] = []
     var allObjects : [UIView] = []
     var collisionBehavior = UICollisionBehavior()
-    var lives = 5
-    
+    var lives = 0
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -41,8 +40,6 @@ class ViewController: UIViewController, UICollisionBehaviorDelegate {
             }
             else {
                 gameOver("You Lost")
-                
-                
             }
         }
     }
@@ -86,7 +83,7 @@ class ViewController: UIViewController, UICollisionBehaviorDelegate {
         
         let pushBehavior = UIPushBehavior(items: [ball], mode: .Instantaneous)
         pushBehavior.pushDirection = CGVectorMake(0.5, 1.0)
-        pushBehavior.magnitude = 0.25
+        pushBehavior.magnitude = 0.1
         dynamicAnimator.addBehavior(pushBehavior)
         
         let paddleBehavior = UIDynamicItemBehavior(items: [paddle])
@@ -107,9 +104,10 @@ class ViewController: UIViewController, UICollisionBehaviorDelegate {
         let width = (Int)(view.bounds.size.width - 40)
         let margin = ((Int)(view.bounds.size.width) % 42)/2
         for var x = margin; x < width; x += 42 {addBlock(x, y: 40, color: UIColor.blueColor())}
-        for var x = margin; x < width; x += 42 {addBlock(x, y: 62, color: UIColor.orangeColor())}
-        for var x = margin; x < width; x += 42 {addBlock(x, y: 84, color: UIColor.orangeColor())}
-        for var x = margin; x < width; x += 42 {addBlock(x, y: 128, color: UIColor.orangeColor())}
+        for var x = margin; x < width; x += 42 {addBlock(x, y: 62, color: UIColor.yellowColor())}
+        for var x = margin; x < width; x += 42 {addBlock(x, y: 84, color: UIColor.yellowColor())}
+        for var x = margin; x < width; x += 42 {addBlock(x, y: 106, color: UIColor.yellowColor())}
+        for var x = margin; x < width; x += 42 {addBlock(x, y: 128, color: UIColor.yellowColor())}
         for var x = margin; x < width; x += 42 {addBlock(x, y: 150 , color: UIColor.greenColor())}
         for var x = margin; x < width; x += 42 {addBlock(x, y: 172, color: UIColor.greenColor())}
         for var x = margin; x < width; x += 42 {addBlock(x, y: 194, color: UIColor.greenColor())}
@@ -126,6 +124,7 @@ class ViewController: UIViewController, UICollisionBehaviorDelegate {
         collisionBehavior.collisionDelegate = self
         dynamicAnimator.addBehavior(collisionBehavior)
         
+        lives = 5
         livesLabel.text = "Lives: \(lives)"
 
     }
